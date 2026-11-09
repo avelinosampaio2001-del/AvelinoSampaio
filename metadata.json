@@ -1,0 +1,6 @@
+{
+  "name": "Quieto Angola | Gráfica de Brindes & T-shirts",
+  "description": "Plataforma de personalização em tempo real de T-shirts e brindes corporativos com orçamentos instantâneos e pagamentos Multicaixa Express em Angola.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

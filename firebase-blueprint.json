@@ -1,0 +1,100 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Artigo ou brinde do catálogo Quieto Angola",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 64 },
+        "categoryLabel": { "type": "string", "maxLength": 100 },
+        "basePrice": { "type": "number" },
+        "image": { "type": "string" },
+        "description": { "type": "string", "maxLength": 2000 },
+        "minOrder": { "type": "number" },
+        "leadTimeDays": { "type": "number" },
+        "featured": { "type": "boolean" },
+        "allowCustomizer": { "type": "boolean" }
+      },
+      "required": ["id", "name", "category", "basePrice"]
+    },
+    "BannerSlide": {
+      "title": "BannerSlide",
+      "description": "Slide dinâmico do banner de topo em ecrã total",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "tagline": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "image": { "type": "string" },
+        "ctaText": { "type": "string", "maxLength": 60 },
+        "ctaAction": { "type": "string", "maxLength": 30 },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "title", "image"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Fotografia ou trabalho real no Portfólio Quieto Angola",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "category": { "type": "string", "maxLength": 64 },
+        "categoryLabel": { "type": "string", "maxLength": 100 },
+        "image": { "type": "string" },
+        "technique": { "type": "string", "maxLength": 120 },
+        "description": { "type": "string", "maxLength": 1000 },
+        "client": { "type": "string", "maxLength": 120 },
+        "minQuantity": { "type": "number" }
+      },
+      "required": ["id", "title", "image"]
+    },
+    "OrderRecord": {
+      "title": "OrderRecord",
+      "description": "Registo de encomenda e faturação da Quieto Angola",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "date": { "type": "string", "maxLength": 40 },
+        "customerName": { "type": "string", "maxLength": 150 },
+        "customerPhone": { "type": "string", "maxLength": 50 },
+        "customerEmail": { "type": "string", "maxLength": 120 },
+        "customerAddress": { "type": "string", "maxLength": 300 },
+        "customerProvince": { "type": "string", "maxLength": 100 },
+        "isCompany": { "type": "boolean" },
+        "companyName": { "type": "string", "maxLength": 150 },
+        "nif": { "type": "string", "maxLength": 40 },
+        "subtotal": { "type": "number" },
+        "discount": { "type": "number" },
+        "shippingFee": { "type": "number" },
+        "tax": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "paymentMethod": { "type": "string", "maxLength": 40 },
+        "paymentStatus": { "type": "string", "maxLength": 40 },
+        "trackingStep": { "type": "number" }
+      },
+      "required": ["id", "customerName", "totalAmount", "paymentStatus"]
+    }
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Coleção de artigos do catálogo online"
+    },
+    "/bannerSlides/{slideId}": {
+      "schema": { "$ref": "#/entities/BannerSlide" },
+      "description": "Coleção de slides do banner rotativo"
+    },
+    "/galleryItems/{itemId}": {
+      "schema": { "$ref": "#/entities/GalleryItem" },
+      "description": "Coleção de fotografias do portfólio oficial"
+    },
+    "/orders/{orderId}": {
+      "schema": { "$ref": "#/entities/OrderRecord" },
+      "description": "Coleção de encomendas e faturas"
+    }
+  }
+}
